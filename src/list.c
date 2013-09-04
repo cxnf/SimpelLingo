@@ -1,29 +1,47 @@
-#include "linkedlist.h"
+#include "list.h"
 
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
 
 // ----------------- Struct definitions -----------------------------------
+
+/*! \struct _list_
+  \brief Implementation of 'List' type.
+  Lists hold only hold iterators to their first and last entry.
+  A list maintains a counter to determine the amount of entries it holds.
+  Outside of compilation unit list may only be refered to by pointers.
+*/
 struct _list_ {
-  Iterator first;
-  Iterator last;
-  uint32_t uiSize;
+  Iterator first;                                 //<! Iterator to first entry.
+  Iterator last;                                  //<! Iterator to last entry.
+  uint32_t uiSize;                                //<! Entry counter.
 };
 
+/*! \struct _iterator_
+  \brief Implementation of 'Iterator' type.
+  Iterators are actually wrappers around void pointers to implement a doubly linked list (with next/prev field).
+  Iterators outside of compilation unit are allows pointers to iterators, these iterators are never actually changed.
+  Instead the pointer is changed to point to another iterator.
+*/
 struct _iterator_ {
-  Iterator next;
-  Iterator prev;
-  void * pItem;
-  List container;
+  Iterator next;                                  //<! Iterator to next entry, or NULL when this is the last entry.
+  Iterator prev;                                  //<! Iterator to previous entry, or NULL when this is the first entry.
+  void * pItem;                                   //<! Pointer to actual data, may only be NULL for the 'NULL iterator'.
+  List container;                                 //<! Pointer to container, or NULL when pointer is in an invalid state.
 };
 
 
-// ----------------- Local Function declarations --------------------------
-static struct _iterator_ _NULL_iterator_ = { NULL, NULL, NULL, NULL };
+// ----------------- Local Variables --------------------------------------
+static struct _iterator_ _NULL_iterator_ = { NULL, NULL, NULL, NULL }; //<! NULL iterator, allows functions to return a valid pointer to an invalid iterator without creating potential memory leaks.
 
 
 // ----------------- Local Function declarations --------------------------
+
+/*! \brief Get the 'NULL iterator'.
+  Returns a valid pointer to an invalid iterator without requirement to allocate a new iterator.
+  \return Invalid iterator.
+*/
 static inline Iterator getNullIterator();
 
 
