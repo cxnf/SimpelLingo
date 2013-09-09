@@ -11,9 +11,9 @@
   \brief Results of a match.
 */
 enum MatchResults {
-  MRWin,                                          //<! Won match.
-  MRLose,                                         //<! Lost match.
-  MRRunError                                      //<! Match resulted in an error.
+  MRWin,                                          //!< Won match.
+  MRLose,                                         //!< Lost match.
+  MRRunError                                      //!< Match resulted in an error.
 };
 
 /*! \brief Starts a match.

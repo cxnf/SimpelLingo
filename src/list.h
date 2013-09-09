@@ -6,8 +6,8 @@
 
 #include <stdint.h>
 
-typedef struct _list_ * List;
-typedef struct _iterator_ * Iterator;
+typedef struct _list_ * List;                     //!< Doubly linked list type.
+typedef struct _iterator_ * Iterator;             //!< Iterator of list, pointer or data pointed to may never be alter outside list implementation.
 
 // ----------------- List functions ---------------------------------------
 

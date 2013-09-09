@@ -11,11 +11,11 @@
   \brief Context of tokenizer.
 */
 struct ParseContext {
-  FILE * file;                                    //<! File parsed by tokenizer.
-  List list;                                      //<! List to mimic dynamic string.
-  int iLine;                                      //<! Line number of tokenizer.
-  int iColumn;                                    //<! Column number of tokenizer.
-  parserCallback fnCallback;                      //<! Callback for external token processing.
+  FILE * file;                                    //!< File parsed by tokenizer.
+  List list;                                      //!< List to mimic dynamic string.
+  int iLine;                                      //!< Line number of tokenizer.
+  int iColumn;                                    //!< Column number of tokenizer.
+  parserCallback fnCallback;                      //!< Callback for external token processing.
 };
 
 

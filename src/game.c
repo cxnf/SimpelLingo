@@ -7,20 +7,48 @@
 
 #define COUNTER_START 5
 
-typedef const char * CWord;
-typedef char * Word;
+typedef const char * CWord;                       //!< Constant word.
+typedef char * Word;                              //!< Dynamic word.
 
 // ----------------- Struct definitions -----------------------------------
+
+/*! \struct GameContext
+  \brief Context of a match.
+*/
 struct GameContext {
-  uint8_t uiRemainingRounds;
-  CWord cwWord;
-  Word wTip;
+  uint8_t uiRemainingRounds;                      //!< Remaining amount of tries.
+  CWord cwWord;                                   //!< Word to guess.
+  Word wTip;                                      //!< Tip showing correct characters.
 };
 
 // ----------------- Local Function declarations --------------------------
+
+/*! \brief Fetch input from user.
+  Fetches input from user and checks for input errors.
+  \param wBuffer Buffer to write input to.
+  \param pgcContext Context of match.
+  \return 1 on success, else 0.
+*/
 static inline int8_t fetchInput(Word wBuffer, struct GameContext * pgcContext);
+/*! \brief Returns remaining rounds.
+  Returns a value indicating match is still running or finished.
+  \param pgcContext Context of game.
+  \return 0 when match finished, else remaining tries.
+*/
 static inline int8_t isMatchOn(struct GameContext * pgcContext);
+/*! \brief Guess word.
+  Performs a word compare and updates game context.
+  \param wBuffer Guessed word.
+  \param pgcContext Context of game.
+  \return 1 on success, else 0.
+*/
 static inline int8_t guess(Word wBuffer, struct GameContext * pgcContext);
+/*! \brief Is word valid.
+  Returns a value indicating word is accepted as input word.
+  \param wBuffer Word to validate.
+  \param lWords List of acceptable words.
+  \return 1 on success, else 0.
+*/
 static inline int8_t isAllowed(Word wBuffer, List lWords);
 
 

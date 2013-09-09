@@ -13,9 +13,9 @@
   Outside of compilation unit list may only be refered to by pointers.
 */
 struct _list_ {
-  Iterator first;                                 //<! Iterator to first entry.
-  Iterator last;                                  //<! Iterator to last entry.
-  uint32_t uiSize;                                //<! Entry counter.
+  Iterator first;                                 //!< Iterator to first entry.
+  Iterator last;                                  //!< Iterator to last entry.
+  uint32_t uiSize;                                //!< Entry counter.
 };
 
 /*! \struct _iterator_
@@ -25,15 +25,15 @@ struct _list_ {
   Instead the pointer is changed to point to another iterator.
 */
 struct _iterator_ {
-  Iterator next;                                  //<! Iterator to next entry, or NULL when this is the last entry.
-  Iterator prev;                                  //<! Iterator to previous entry, or NULL when this is the first entry.
-  void * pItem;                                   //<! Pointer to actual data, may only be NULL for the 'NULL iterator'.
-  List container;                                 //<! Pointer to container, or NULL when pointer is in an invalid state.
+  Iterator next;                                  //!< Iterator to next entry, or NULL when this is the last entry.
+  Iterator prev;                                  //!< Iterator to previous entry, or NULL when this is the first entry.
+  void * pItem;                                   //!< Pointer to actual data, may only be NULL for the 'NULL iterator'.
+  List container;                                 //!< Pointer to container, or NULL when pointer is in an invalid state.
 };
 
 
 // ----------------- Local Variables --------------------------------------
-static struct _iterator_ _NULL_iterator_ = { NULL, NULL, NULL, NULL }; //<! NULL iterator, allows functions to return a valid pointer to an invalid iterator without creating potential memory leaks.
+static struct _iterator_ _NULL_iterator_ = { NULL, NULL, NULL, NULL }; //!< NULL iterator, allows functions to return a valid pointer to an invalid iterator without creating potential memory leaks.
 
 
 // ----------------- Local Function declarations --------------------------

@@ -10,21 +10,21 @@
   \brief Supported token types.
 */
 enum TokenType {
-  TTText                                          //<! Text token.
+  TTText                                          //!< Text token.
 };
 
 /*! \enum ParseResults
   \brief Return codes of parse functions.
 */
 enum ParseResults {
-  ROk = 0,                                        //<! No errors.
-  RErrCanceled,                                   //<! Parse operation canceled by callback.
-  RErrInvalidToken,                               //<! Invalid or unexpected token found.
-  RErrMissingToken                                //<! Missing token.
+  ROk = 0,                                        //!< No errors.
+  RErrCanceled,                                   //!< Parse operation canceled by callback.
+  RErrInvalidToken,                               //!< Invalid or unexpected token found.
+  RErrMissingToken                                //!< Missing token.
 };
 
-typedef const char * Token;
-typedef int8_t (*parserCallback)(enum TokenType, Token);
+typedef const char * Token;                       //!< Token type.
+typedef int8_t (*parserCallback)(enum TokenType, Token); //!< Type of tokenizer callback.
 
 /*! \brief Generate token stream from file stream.
   Generates a token stream from a file stream.
