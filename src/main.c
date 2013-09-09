@@ -10,6 +10,12 @@
 
 static List wordList;
 
+/*! \brief Processes token for tokenizer.
+  Appends token to world list.
+  \param ttType Type of the token to process.
+  \param token Token data.
+  \return 0 to cancel on unsupported token type, otherwise 1.
+*/
 static int8_t processToken(enum TokenType ttType, Token token) {
   switch (ttType) {
   case TTText:
@@ -22,6 +28,12 @@ static int8_t processToken(enum TokenType ttType, Token token) {
   }
 }
 
+/*! \brief Entry point.
+  Program entry point, calls all systems.
+  \param argc Amount of arguments passed from command line.
+  \param argv Arguments passed from command line.
+  \return 0 on supported run type, otherwise error code.
+*/
 int main(int argc, char ** argv) {
   if (argc < 3) {
     printf("Error: Not enough arguments.\n");
@@ -62,6 +74,7 @@ int main(int argc, char ** argv) {
       }
     } else {
       printf("Error: Invalid mode.\n");
+      return 2;
     }
     
     destroyList(wordList);

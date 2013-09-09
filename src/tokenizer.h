@@ -10,7 +10,7 @@
   \brief Supported token types.
 */
 enum TokenType {
-  TTText
+  TTText                                          //<! Text token.
 };
 
 /*! \enum ParseResults

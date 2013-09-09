@@ -6,20 +6,49 @@
 #include <stdio.h>
 
 // ----------------- Struct definitions -----------------------------------
+
+/*! \struct ParseContext
+  \brief Context of tokenizer.
+*/
 struct ParseContext {
-  FILE * file;
-  List list;
-  int iLine;
-  int iColumn;
-  parserCallback fnCallback;
+  FILE * file;                                    //<! File parsed by tokenizer.
+  List list;                                      //<! List to mimic dynamic string.
+  int iLine;                                      //<! Line number of tokenizer.
+  int iColumn;                                    //<! Column number of tokenizer.
+  parserCallback fnCallback;                      //<! Callback for external token processing.
 };
 
 
 // ----------------- Local Function declarations --------------------------
+
+/*! \brief Report error.
+  Reports an error to stdin.
+  \param ccaMessage Message to print.
+  \param cppcContext Context of the tokenizer.
+*/
 static inline void reportError(const char * ccaMessage, const struct ParseContext * cppcContext);
+/*! \brief Free memory.
+  Frees all memory allocated by tokenizer for current context.
+  \param ppcContext Context to free.
+*/
 static inline void cleanUp(struct ParseContext * ppcContext);
+/*! \brief Report error and clean up.
+  Reports an error to stdin and frees memory.
+  \param ccaMessage Message to print.
+  \param ppcContext Context of the tokenizer.
+*/
 static inline void reportAndClean(const char * ccaMessage, struct ParseContext * ppcContext);
+/*! \brief Parse new line char.
+  Parses a new line char to support for '\n', '\n\r' and '\r'.
+  \param ppcContext Context of tokenizer.
+  \return Parse result.
+*/
 static enum ParseResults parseNewLine(struct ParseContext * ppcContext);
+/*! \brief Parse expression.
+  Parses an expression.
+  \param ppcContext Context of tokenizer.
+  \return Parse result.
+*/  
 static enum ParseResults parseExpression(struct ParseContext * ppcContext);
 
 
