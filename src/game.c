@@ -57,6 +57,7 @@ enum MatchResults startMatch(uint32_t uiIndex, List lWords) {
   Iterator iter = getEntry(lWords, uiIndex);
   struct GameContext gcContext = { COUNTER_START, (CWord)getCurrent(iter), (Word)malloc(sizeof(char) * 6) };
   memset(gcContext.wTip, (int)'_', sizeof(char) * 5);
+  *gcContext.wTip = *gcContext.cwWord;
   gcContext.wTip[5] = '\0';
   Word wBuffer = (Word)malloc(sizeof(char) * 6);
 
@@ -82,6 +83,7 @@ enum MatchResults startMatch(uint32_t uiIndex, List lWords) {
     }
   }
 
+  printf("Word was: %s\n", gcContext.cwWord);
   return MRLose;
 }
 
